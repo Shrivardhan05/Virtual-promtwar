@@ -22,9 +22,9 @@
     <p>Understand timelines, steps, and voting paths with guided help.</p>
   </header>
 
-  <main class="grid">
-    <section class="card">
-      <h2>Interactive Assistant</h2>
+  <main class="grid" role="main">
+    <section class="card" role="region" aria-labelledby="h2-chat">
+      <h2 id="h2-chat">Interactive Assistant</h2>
       <div id="chat" class="chat" aria-live="polite"></div>
       <form id="chat-form" class="chat-form">
         <label for="user-input" class="sr-only">Ask a question</label>
@@ -38,13 +38,13 @@
       </div>
     </section>
 
-    <section class="card">
-      <h2>Election Timeline</h2>
+    <section class="card" role="region" aria-labelledby="h2-timeline">
+      <h2 id="h2-timeline">Election Timeline</h2>
       <ul id="timeline" class="timeline"></ul>
     </section>
 
-    <section class="card">
-      <h2>Personalized Step Navigator</h2>
+    <section class="card" role="region" aria-labelledby="h2-nav">
+      <h2 id="h2-nav">Personalized Step Navigator</h2>
       <form id="navigator">
         <label>Are you registered?
           <select id="registered">
@@ -75,8 +75,8 @@
       <ol id="steps" class="steps"></ol>
     </section>
 
-    <section class="card">
-      <h2>Quick Learning Check</h2>
+    <section class="card" role="region" aria-labelledby="h2-quiz">
+      <h2 id="h2-quiz">Quick Learning Check</h2>
       <div id="quiz"></div>
       <button id="grade-quiz">Check Answers</button>
       <p id="quiz-result"></p>

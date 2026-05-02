@@ -35,5 +35,15 @@ export const quiz = [
     q: "Which is important for absentee voting?",
     options: ["Ignoring return dates", "Returning ballot before deadline", "No verification needed"],
     correct: 1
+  },
+  {
+    q: "What is a 'Sample Ballot' used for?",
+    options: ["To practice voting and research candidates beforehand", "To submit your actual official vote early", "To register your identity at the polling place"],
+    correct: 0
+  },
+  {
+    q: "If you don't have the required Photo ID on election day, what is usually your best option?",
+    options: ["Go home and skip voting", "Vote online instead", "Ask for a provisional ballot and follow up with documentation"],
+    correct: 2
   }
 ];
