@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Election Process Education Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Election Process Education Assistant</h1>
+    <p>Understand timelines, steps, and voting paths with guided help.</p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Interactive Assistant</h2>
+      <div id="chat" class="chat" aria-live="polite"></div>
+      <form id="chat-form" class="chat-form">
+        <label for="user-input" class="sr-only">Ask a question</label>
+        <input id="user-input" name="user-input" placeholder="Ask about registration, deadlines, ID, absentee voting..." required />
+        <button type="submit">Send</button>
+      </form>
+      <div class="quick-actions">
+        <button data-q="I'm a first-time voter. What should I do first?">First-time voter</button>
+        <button data-q="How does absentee voting usually work?">Absentee voting</button>
+        <button data-q="What documents should I keep ready?">Required documents</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Election Timeline</h2>
+      <ul id="timeline" class="timeline"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Personalized Step Navigator</h2>
+      <form id="navigator">
+        <label>Are you registered?
+          <select id="registered">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="unsure">Not sure</option>
+          </select>
+        </label>
+
+        <label>Preferred voting mode
+          <select id="mode">
+            <option value="in_person">In-person</option>
+            <option value="early">Early voting</option>
+            <option value="mail">Mail/absentee</option>
+          </select>
+        </label>
+
+        <label>Do you have a valid photo ID?
+          <select id="id">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="unknown">Not sure</option>
+          </select>
+        </label>
+
+        <button type="submit">Generate My Steps</button>
+      </form>
+      <ol id="steps" class="steps"></ol>
+    </section>
+
+    <section class="card">
+      <h2>Quick Learning Check</h2>
+      <div id="quiz"></div>
+      <button id="grade-quiz">Check Answers</button>
+      <p id="quiz-result"></p>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
