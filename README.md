@@ -1,75 +1,59 @@
-# Election Process Education Assistant
+# Election Process Education Assistant (Gemini + Firebase Ready)
 
-An interactive web assistant that helps users understand election processes, timelines, and decision steps in a simple, guided way.
+An interactive web assistant that helps users understand election process timelines, required steps, and voting pathways.
 
-## Chosen Vertical
-**Election Process Education**
+## What's improved for hackathon quality
+- Gemini-powered dynamic assistant responses (with local fallback engine).
+- Cleaner UX with instant quick prompts and personalized navigator.
+- Firebase Hosting setup included for the fastest public deployment.
+- Lightweight static architecture suitable for challenge constraints.
 
-## What this project does
-This solution provides:
-- A guided **chat assistant** that answers election-process questions using a rule-based knowledge engine.
-- A dynamic **timeline** view for major election phases.
-- A **step-by-step navigator** based on user context (first-time voter, absentee voter, student, etc.).
-- A short **knowledge quiz** for learning validation.
-- A clean dashboard-like UI inspired by the provided template.
-
-## Google Services Integration
-The app is built so you can enable Google services quickly:
-1. **Gemini API (optional):** Replace the local rule engine with Gemini for richer answers.
-2. **Google Cloud Run deployment:** Included Dockerfile for containerized deployment.
-3. **Firebase Hosting (optional):** Can host this static app directly.
-
-> For evaluation safety, the default implementation works without external API keys.
-
-## Approach and Logic
-### 1) Context-aware decision flow
-The assistant asks profile questions and routes users to tailored steps:
-- Registration status
-- Residence state/region
-- Voting mode (in-person/mail/early voting)
-- ID availability
-
-### 2) Policy-safe information design
-- Gives educational guidance only.
-- Recommends checking local election authority for legal deadlines.
-- Avoids legal claims when local-specific details are unknown.
-
-### 3) Usability
-- Accessible labels and keyboard-friendly controls.
-- Clear cards and timeline sections.
-- Lightweight app (<10 MB repository target).
-
-## How it works
-- `index.html`: UI structure.
-- `styles.css`: responsive layout and theme.
-- `app.js`: assistant logic, timeline engine, and quiz.
-- `data/electionKnowledge.js`: curated knowledge base and routing prompts.
-
-## Assumptions
-- Election rules vary by country/state; this project provides a generalized learning framework.
-- Users should verify exact deadlines with official election websites.
-- Internet/API integration is optional and can be enabled later.
+## Features
+- **AI Assistant (Gemini API):** Uses `gemini-1.5-flash` via REST API from browser.
+- **Fallback Smart Logic:** If Gemini key is unavailable, app still works with rule-based responses.
+- **Election Timeline:** Key election phases in sequence.
+- **Personalized Voter Steps:** Generates a contextual checklist.
+- **Learning Quiz:** Quick concept validation for users.
 
 ## Run locally
-Open `index.html` directly in browser, or run a local server:
-
 ```bash
 python3 -m http.server 8080
 ```
+Open: `http://localhost:8080`
 
-Then visit: `http://localhost:8080`
+## Gemini setup
+1. Open app.
+2. Click **Set Gemini Key**.
+3. Paste your Gemini API key.
+4. Key is stored in browser `localStorage` (client-side only).
 
-## Deploy (Cloud Run)
+> For production security, proxy Gemini calls through a backend (Cloud Run/Functions) rather than exposing keys in browser.
+
+## Fastest Firebase deployment
+1. Install Firebase CLI
 ```bash
-gcloud builds submit --tag gcr.io/PROJECT_ID/election-assistant
-
-gcloud run deploy election-assistant \
-  --image gcr.io/PROJECT_ID/election-assistant \
-  --platform managed \
-  --allow-unauthenticated
+npm i -g firebase-tools
+```
+2. Login
+```bash
+firebase login
+```
+3. Set your project id in `.firebaserc` (replace `YOUR_FIREBASE_PROJECT_ID`).
+4. Deploy hosting
+```bash
+firebase deploy --only hosting
 ```
 
-## Repository Rules Compliance
-- Single branch workflow.
-- Public GitHub repository ready.
-- Lightweight static app structure for size control.
+After deploy, use the Firebase Hosting URL as the deployed link in submission.
+
+## Challenge deliverables mapping
+- **Code Quality:** Modular data (`data/electionKnowledge.js`) + clear app logic.
+- **Security:** Fallback mode without mandatory key; production key-handling note included.
+- **Efficiency:** No heavy dependencies; static assets only.
+- **Testing:** Manual functional checks + lightweight footprint.
+- **Accessibility:** Semantic labels and keyboard-friendly controls.
+- **Google Services:** Gemini API + Firebase Hosting integration.
+
+## Assumptions
+- Election rules and deadlines vary by locality.
+- App provides educational guidance and asks users to verify official local deadlines.
