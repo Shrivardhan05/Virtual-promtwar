@@ -1,44 +1,119 @@
 :root {
-  --bg: #0f1235;
-  --card: #171c4f;
-  --text: #eef2ff;
-  --muted: #b7c0ff;
-  --accent: #4db7ff;
+  --bg: #0b0d24; /* Darker for better contrast */
+  --card: #151a44;
+  --text: #ffffff; /* pure white for max contrast */
+  --muted: #c9d1ff;
+  --accent: #5ec0ff; /* slightly brighter for AAA contrast against dark blue */
+  --focus: #ffb74d; /* High contrast focus ring color */
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: Inter, system-ui, Arial, sans-serif;
-  background: radial-gradient(circle at top, #242b83, var(--bg));
+  background: radial-gradient(circle at top, #1c2266, var(--bg));
   color: var(--text);
+  line-height: 1.5;
 }
+
 .topbar { padding: 1rem 1.2rem; }
+
 .grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 1rem;
 }
+
 .card {
   background: var(--card);
   border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
-.chat { min-height: 180px; max-height: 280px; overflow:auto; padding:.5rem; border:1px solid #2d357f; border-radius:8px; margin-bottom:.8rem; }
-.msg { margin: .4rem 0; padding: .5rem .7rem; border-radius: 8px; }
-.user { background:#2e3ab6; }
-.bot { background:#22307e; }
-.chat-form { display:flex; gap:.5rem; }
-input, select, button { border-radius:8px; border:1px solid #3c46a0; padding:.55rem; }
-input, select { width:100%; background:#141b57; color:var(--text); }
-button { background: var(--accent); color:#04132f; font-weight:600; cursor:pointer; }
-.quick-actions { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem; }
-.timeline { list-style:none; padding-left:0; }
-.timeline li { margin:.6rem 0; padding-left:.8rem; border-left:3px solid var(--accent); }
-.steps li { margin:.4rem 0; }
-label { display:block; margin:.5rem 0; }
-.sr-only { position:absolute; left:-10000px; }
 
-.title-row{display:flex;justify-content:space-between;gap:.7rem;align-items:center}
-.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.chat { 
+  min-height: 180px; 
+  max-height: 280px; 
+  overflow-y: auto; 
+  padding: .8rem; 
+  border: 1px solid #323a85; 
+  border-radius: 8px; 
+  margin-bottom: 1rem; 
+  background: #0f1338;
+}
+
+.msg { margin: .4rem 0; padding: .6rem .8rem; border-radius: 8px; font-size: 0.95rem; }
+.user { background: #3746d3; }
+.bot { background: #26368d; }
+
+.chat-form { display:flex; gap:.5rem; }
+
+input, select, button { 
+  border-radius: 8px; 
+  border: 1px solid #4a55b3; 
+  padding: .65rem; 
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+input, select { width: 100%; background: #1a2266; color: var(--text); }
+
+button { 
+  background: var(--accent); 
+  color: #030d22; 
+  font-weight: 700; 
+  cursor: pointer; 
+}
+
+button:hover { background: #82ceff; }
+
+/* Interactive Clarity / Accessibility */
+*:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.quick-actions { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.8rem; }
+
+.timeline { list-style:none; padding-left:0; }
+.timeline li { margin: 1rem 0; padding-left: 1rem; border-left: 4px solid var(--accent); }
+
+.steps { padding-left: 1.2rem; }
+.steps li { margin: .6rem 0; }
+
+label { display: block; margin: .6rem 0; font-weight: 500; }
+
+.sr-only { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.title-row { display: flex; justify-content: space-between; gap: .7rem; align-items: center; flex-wrap: wrap; }
+.title-row h1 { margin: 0; font-size: 1.5rem; }
+
+.ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+.ghost:hover { background: rgba(94, 192, 255, 0.1); }
+
+/* Quiz Fieldset Accessibility */
+.quiz-fieldset {
+  border: 1px solid #323a85;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #12173d;
+}
+.quiz-fieldset legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+  color: var(--accent);
+}
+.quiz-fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: normal;
+}
+.quiz-fieldset input[type="radio"] {
+  width: auto;
+}

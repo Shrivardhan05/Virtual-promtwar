@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://apis.google.com; connect-src 'self' https://generativelanguage.googleapis.com https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com; frame-src 'self' https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
   <title>Election Process Education Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="styles.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="title-row"><h1>Election Process Education Assistant</h1><button id="set-key" class="ghost">Set Gemini Key</button></div>
+    <div class="title-row">
+      <h1>Election Process Education Assistant</h1>
+      <div>
+        <button id="auth-btn" class="ghost" aria-label="Login with Google">Login</button>
+        <button id="set-key" class="ghost" aria-label="Set Gemini API Key">Set Gemini Key</button>
+      </div>
+    </div>
     <p>Understand timelines, steps, and voting paths with guided help.</p>
   </header>
 
